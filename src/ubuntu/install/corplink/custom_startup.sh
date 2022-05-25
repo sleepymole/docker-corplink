@@ -78,6 +78,8 @@ kasm_startup() {
 
 } 
 
+iptables -t nat -F
+iptables -t nat -A POSTROUTING -j MASQUERADE
 /usr/bin/supervisord 2>/dev/null || true
 
 if [ -n "$GO" ] || [ -n "$ASSIGN" ] ; then
