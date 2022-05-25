@@ -24,7 +24,7 @@ docker run -d \
 * User : kasm_user
 * Password: password
 
-3. Access corplink network via http proxy: http://localhost:8888 or socks5 proxy: localhost:1088.
+3. Access corplink network via http proxy: localhost:8888 or socks5 proxy: localhost:1088.
 
 ## Acknowledgments
 
