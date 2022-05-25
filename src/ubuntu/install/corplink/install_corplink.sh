@@ -5,7 +5,7 @@ apt update
 apt install supervisor privoxy -y
 sed -i '/^listen-address/d' /etc/privoxy/config
 echo 'listen-address 0.0.0.0:8118' >>/etc/privoxy/config
-mkdir -p /var/log/corplink/ /var/log/privoxy/
+mkdir -p /var/log/corplink/ /var/log/privoxy/ /var/log/socks5/
 cat <<EOF >/etc/supervisor/conf.d/corplink.conf
 [program:corplink]
 command=/opt/Corplink/corplink-service
@@ -21,6 +21,14 @@ autostart=true
 autorestart=true
 stderr_logfile=/var/log/privoxy/stderr.log
 stdout_logfile=/var/log/privoxy/stdout.log
+EOF
+cat <<EOF >/etc/supervisor/conf.d/socks5.conf
+[program:socks5]
+command=/usr/local/bin/socks5
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/socks5/stderr.log
+stdout_logfile=/var/log/socks5/stdout.log
 EOF
 
 wget -q -O corplink.deb https://oss-s3.ifeilian.com/linux/FeiLian_Linux_v2.0.9_r615_97b98b.deb
