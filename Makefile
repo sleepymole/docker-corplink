@@ -1,2 +1,2 @@
 build:
-	docker build -t gozssky/corplink:latest .
+	docker build -t sleepymole/corplink:latest .

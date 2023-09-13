@@ -16,7 +16,7 @@ docker run -d \
   -p 8888:8118 \
   -p 1088:1080 \
   -e VNC_PW=password \
-  gozssky/corplink:latest
+  sleepymole/corplink:latest
 ```
 
 2. Configure corplink via a browser: https://localhost:6901.
