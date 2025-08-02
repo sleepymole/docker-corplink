@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -ex
-START_COMMAND="/opt/Corplink/corplink"
+START_COMMAND="/opt/apps/com.volcengine.feilian/files/corplink"
 PGREP="corplink"
 export MAXIMIZE="true"
 export MAXIMIZE_NAME="Corplink"
@@ -78,9 +78,9 @@ kasm_startup() {
 
 } 
 
-iptables -t nat -F
-iptables -t nat -A POSTROUTING -j MASQUERADE
-/usr/bin/supervisord 2>/dev/null || true
+sudo iptables -t nat -F
+sudo iptables -t nat -A POSTROUTING -j MASQUERADE
+sudo /usr/bin/supervisord 2>/dev/null || true
 
 if [ -n "$GO" ] || [ -n "$ASSIGN" ] ; then
     kasm_exec
