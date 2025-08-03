@@ -78,8 +78,10 @@ kasm_startup() {
 
 } 
 
+sudo iptables -F
 sudo iptables -t nat -F
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
+sudo iptables -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 sudo /usr/bin/supervisord 2>/dev/null || true
 
 if [ -n "$GO" ] || [ -n "$ASSIGN" ] ; then
