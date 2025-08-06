@@ -19,6 +19,8 @@ docker run -d \
   sleepymole/corplink:latest
 ```
 
+Both arm64 and amd64 architectures are supported.
+
 2. Configure corplink via a browser: https://localhost:6901.
 
 * User : kasm_user
