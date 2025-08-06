@@ -62,7 +62,11 @@ stderr_logfile=/var/log/fixdns/stderr.log
 stdout_logfile=/var/log/fixdns/stdout.log
 EOF
 
-wget -q -O corplink.deb https://cdn.isealsuite.com/linux/FeiLian_Linux_amd64_v3.0.23_r5833_c34f4b.deb
+if [ "$(uname -m)" = "aarch64" ] || [ "$(uname -m)" = "arm64" ]; then
+  wget -q -O corplink.deb https://cdn.isealsuite.com/linux/FeiLian_Linux_arm64_v3.0.24_r5980_d44583.deb
+else
+  wget -q -O corplink.deb https://cdn.isealsuite.com/linux/FeiLian_Linux_amd64_v3.0.24_r5980_6ebb49.deb
+fi
 apt install ./corplink.deb -y
 rm corplink.deb
 cp /usr/share/applications/corplink.desktop $HOME/Desktop/
