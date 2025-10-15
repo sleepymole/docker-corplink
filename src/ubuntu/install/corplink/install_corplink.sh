@@ -33,6 +33,7 @@ mkdir -p /var/log/socks5/
 cat <<EOF >/etc/supervisor/conf.d/socks5.conf
 [program:socks5]
 command=/usr/local/bin/socks5
+environment=REQUIRE_AUTH=false
 autostart=true
 autorestart=true
 stderr_logfile=/var/log/socks5/stderr.log
